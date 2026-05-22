@@ -592,7 +592,7 @@ exports.pdfSalesBillWise = async (req, res) => {
 
 
 
-const htmlPdf = require("html-pdf");
+// const htmlPdf = require("html-pdf");
 
 const buildItemWiseBillHtml = require("../utils/PrintAndPDF/ItemWiseBillReportHtml");
 const buildItemWiseSalesHtml = require("../utils/PrintAndPDF/ItemWiseSalesReportHtml");
@@ -612,21 +612,21 @@ exports.printItemWiseReport = (req, res) => {
 };
 
 /* ---------------- PDF ---------------- */
-exports.pdfItemWiseReport = (req, res) => {
-  const html = getHtmlByMode(req.body.mode, req.body);
+// exports.pdfItemWiseReport = (req, res) => {
+//   const html = getHtmlByMode(req.body.mode, req.body);
 
-  htmlPdf.create(html, { format: "A4", border: "10mm" })
-    .toBuffer((err, buffer) => {
-      if (err) return res.status(500).send(err.message);
+//   htmlPdf.create(html, { format: "A4", border: "10mm" })
+//     .toBuffer((err, buffer) => {
+//       if (err) return res.status(500).send(err.message);
 
-      res.set({
-        "Content-Type": "application/pdf",
-        "Content-Disposition": "attachment; filename=ItemWise.pdf"
-      });
+//       res.set({
+//         "Content-Type": "application/pdf",
+//         "Content-Disposition": "attachment; filename=ItemWise.pdf"
+//       });
 
-      res.send(buffer);
-    });
-};
+//       res.send(buffer);
+//     });
+// };
 
 
 
@@ -640,25 +640,25 @@ exports.printExpenseReport = (req, res) => {
   res.send(expenseHtml(req.body));
 };
 
-exports.pdfExpenseReport = (req, res) => {
-  const html = expenseHtml(req.body);
-  htmlPdf.create(html).toBuffer((err, buf) => {
-    res.set({ "Content-Type": "application/pdf" });
-    res.send(buf);
-  });
-};
+// exports.pdfExpenseReport = (req, res) => {
+//   const html = expenseHtml(req.body);
+//   htmlPdf.create(html).toBuffer((err, buf) => {
+//     res.set({ "Content-Type": "application/pdf" });
+//     res.send(buf);
+//   });
+// };
 
 exports.printExpenseCategory = (req, res) => {
   res.send(categoryHtml(req.body));
 };
 
-exports.pdfExpenseCategory = (req, res) => {
-  const html = categoryHtml(req.body);
-  htmlPdf.create(html).toBuffer((err, buf) => {
-    res.set({ "Content-Type": "application/pdf" });
-    res.send(buf);
-  });
-};
+// exports.pdfExpenseCategory = (req, res) => {
+//   const html = categoryHtml(req.body);
+//   htmlPdf.create(html).toBuffer((err, buf) => {
+//     res.set({ "Content-Type": "application/pdf" });
+//     res.send(buf);
+//   });
+// };
 
 
 const {
@@ -755,20 +755,20 @@ exports.printExpenseCategoryDetails = (req, res) => {
   res.send(html);
 };
 
-exports.pdfExpenseCategoryDetails = (req, res) => {
-  const html = buildExpenseCategoryViewHtml(req.body);
+// exports.pdfExpenseCategoryDetails = (req, res) => {
+//   const html = buildExpenseCategoryViewHtml(req.body);
 
-  htmlPdf.create(html, { format: "A4" }).toBuffer((err, buffer) => {
-    if (err) return res.status(500).send(err.message);
+//   htmlPdf.create(html, { format: "A4" }).toBuffer((err, buffer) => {
+//     if (err) return res.status(500).send(err.message);
 
-    res.set({
-      "Content-Type": "application/pdf",
-      "Content-Disposition": "attachment; filename=Category_Expense.pdf",
-    });
+//     res.set({
+//       "Content-Type": "application/pdf",
+//       "Content-Disposition": "attachment; filename=Category_Expense.pdf",
+//     });
 
-    res.send(buffer);
-  });
-};
+//     res.send(buffer);
+//   });
+// };
 
 
 

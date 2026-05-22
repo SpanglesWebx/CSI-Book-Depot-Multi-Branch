@@ -29,7 +29,7 @@ const {
 
   // ================= ITEMWISE =================
   printItemWiseReport,
-  pdfItemWiseReport,
+  // pdfItemWiseReport,
 
   // ================= EXPENSE =================
   printExpenseReport,
@@ -90,21 +90,21 @@ router.post("/sales/billwise/pdf", pdfSalesBillWise);
 
 // ================= ITEMWISE =================
 router.post("/itemwise/print", printItemWiseReport);
-router.post("/itemwise/pdf", pdfItemWiseReport);
+// router.post("/itemwise/pdf", pdfItemWiseReport);
 
 // ================= EXPENSE =================
 router.post("/expense/print", printExpenseReport);
-router.post("/expense/pdf", pdfExpenseReport);
+// router.post("/expense/pdf", pdfExpenseReport);
 
 router.post("/expense/view/print", printExpenseViewReport);
 router.post("/expense/view/pdf", pdfExpenseViewReport);
 
 
 router.post("/expense/category/print", printExpenseCategory);
-router.post("/expense/category/pdf", pdfExpenseCategory);
+// router.post("/expense/category/pdf", pdfExpenseCategory);
 
 router.post("/expense/category/details/print", printExpenseCategoryDetails);
-router.post("/expense/category/details/pdf", pdfExpenseCategoryDetails);
+// router.post("/expense/category/details/pdf", pdfExpenseCategoryDetails);
 
 // ================= COLLECTIONS =================
 router.post("/collections/counter/print", printCollectionsCounter);

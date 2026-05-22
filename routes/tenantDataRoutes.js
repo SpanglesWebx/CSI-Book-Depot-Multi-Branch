@@ -6827,7 +6827,7 @@ const path = require("path");
 const pdfPrint = require("pdf-to-printer");
 const { print } = require("pdf-to-printer");
 const Product = require("../models/Product"); // ✅ IMPORT MODEL
-const htmlPdf = require("html-pdf");
+// const htmlPdf = require("html-pdf");
 
 const PRINTER = process.env.PRINTER;
 
@@ -7405,32 +7405,32 @@ router.post(
 // ----------------------------------------------------------
 // EXPENSE REPORT – PDF
 // ----------------------------------------------------------
-router.post(
-  "/shops/:shopname/master/expense/pdf",
-  authTenantOrMaster,
-  async (req, res) => {
-    try {
-      const { shopname } = req.params;
+// router.post(
+//   "/shops/:shopname/master/expense/pdf",
+//   authTenantOrMaster,
+//   async (req, res) => {
+//     try {
+//       const { shopname } = req.params;
 
-      // ORIGINAL LOGIC (UNCHANGED)
-      const html = expenseHtml(req.body);
+//       // ORIGINAL LOGIC (UNCHANGED)
+//       const html = expenseHtml(req.body);
 
-      htmlPdf.create(html).toBuffer((err, buf) => {
-        if (err) {
-          console.error("❌ Expense PDF Error:", err);
-          return res.status(500).send(err.message);
-        }
+//       htmlPdf.create(html).toBuffer((err, buf) => {
+//         if (err) {
+//           console.error("❌ Expense PDF Error:", err);
+//           return res.status(500).send(err.message);
+//         }
 
-        res.set({ "Content-Type": "application/pdf" });
-        res.send(buf);
-      });
+//         res.set({ "Content-Type": "application/pdf" });
+//         res.send(buf);
+//       });
 
-    } catch (err) {
-      console.error("❌ Expense PDF Error:", err);
-      res.status(500).json({ success: false });
-    }
-  }
-);
+//     } catch (err) {
+//       console.error("❌ Expense PDF Error:", err);
+//       res.status(500).json({ success: false });
+//     }
+//   }
+// );
 
 
 
@@ -7528,32 +7528,32 @@ router.post(
 );
 
 
-router.post(
-  "/shops/:shopname/master/expense/category/pdf",
-  authTenantOrMaster,
-  async (req, res) => {
-    try {
-      const { shopname } = req.params;
+// router.post(
+//   "/shops/:shopname/master/expense/category/pdf",
+//   authTenantOrMaster,
+//   async (req, res) => {
+//     try {
+//       const { shopname } = req.params;
 
-      // ORIGINAL LOGIC (UNCHANGED)
-      const html = categoryHtml(req.body);
+//       // ORIGINAL LOGIC (UNCHANGED)
+//       const html = categoryHtml(req.body);
 
-      htmlPdf.create(html).toBuffer((err, buf) => {
-        if (err) {
-          console.error("❌ Expense Category PDF Error:", err);
-          return res.status(500).send(err.message);
-        }
+//       htmlPdf.create(html).toBuffer((err, buf) => {
+//         if (err) {
+//           console.error("❌ Expense Category PDF Error:", err);
+//           return res.status(500).send(err.message);
+//         }
 
-        res.set({ "Content-Type": "application/pdf" });
-        res.send(buf);
-      });
+//         res.set({ "Content-Type": "application/pdf" });
+//         res.send(buf);
+//       });
 
-    } catch (err) {
-      console.error("❌ Expense Category PDF Error:", err);
-      res.status(500).json({ success: false });
-    }
-  }
-);
+//     } catch (err) {
+//       console.error("❌ Expense Category PDF Error:", err);
+//       res.status(500).json({ success: false });
+//     }
+//   }
+// );
 
 
 // ----------------------------------------------------------
@@ -7580,37 +7580,37 @@ router.post(
 // ----------------------------------------------------------
 // EXPENSE CATEGORY DETAILS – PDF
 // ----------------------------------------------------------
-router.post(
-  "/shops/:shopname/master/expense/category/details/pdf",
-  authTenantOrMaster,
-  async (req, res) => {
-    try {
-      const { shopname } = req.params;
+// router.post(
+//   "/shops/:shopname/master/expense/category/details/pdf",
+//   authTenantOrMaster,
+//   async (req, res) => {
+//     try {
+//       const { shopname } = req.params;
 
-      // ORIGINAL LOGIC (UNCHANGED)
-      const html = buildExpenseCategoryViewHtml(req.body);
+//       // ORIGINAL LOGIC (UNCHANGED)
+//       const html = buildExpenseCategoryViewHtml(req.body);
 
-      htmlPdf.create(html, { format: "A4" }).toBuffer((err, buffer) => {
-        if (err) {
-          console.error("❌ Expense Category Details PDF Error:", err);
-          return res.status(500).send(err.message);
-        }
+//       htmlPdf.create(html, { format: "A4" }).toBuffer((err, buffer) => {
+//         if (err) {
+//           console.error("❌ Expense Category Details PDF Error:", err);
+//           return res.status(500).send(err.message);
+//         }
 
-        res.set({
-          "Content-Type": "application/pdf",
-          "Content-Disposition":
-            "attachment; filename=Category_Expense.pdf",
-        });
+//         res.set({
+//           "Content-Type": "application/pdf",
+//           "Content-Disposition":
+//             "attachment; filename=Category_Expense.pdf",
+//         });
 
-        res.send(buffer);
-      });
+//         res.send(buffer);
+//       });
 
-    } catch (err) {
-      console.error("❌ Expense Category Details PDF Error:", err);
-      res.status(500).json({ success: false });
-    }
-  }
-);
+//     } catch (err) {
+//       console.error("❌ Expense Category Details PDF Error:", err);
+//       res.status(500).json({ success: false });
+//     }
+//   }
+// );
 
 
 
@@ -8119,39 +8119,39 @@ router.post(
 // ----------------------------------------------------------
 // ITEMWISE PDF – MASTER
 // ----------------------------------------------------------
-router.post(
-  "/shops/:shopname/master/itemwise/pdf",
-  authTenantOrMaster,
-  async (req, res) => {
-    try {
-      const { shopname } = req.params;
+// router.post(
+//   "/shops/:shopname/master/itemwise/pdf",
+//   authTenantOrMaster,
+//   async (req, res) => {
+//     try {
+//       const { shopname } = req.params;
 
-      // ORIGINAL LOGIC (UNCHANGED)
-      const html = getHtmlByMode(req.body.mode, req.body);
+//       // ORIGINAL LOGIC (UNCHANGED)
+//       const html = getHtmlByMode(req.body.mode, req.body);
 
-      htmlPdf
-        .create(html, { format: "A4", border: "10mm" })
-        .toBuffer((err, buffer) => {
-          if (err) {
-            console.error("❌ ItemWise PDF Error:", err);
-            return res.status(500).send(err.message);
-          }
+//       htmlPdf
+//         .create(html, { format: "A4", border: "10mm" })
+//         .toBuffer((err, buffer) => {
+//           if (err) {
+//             console.error("❌ ItemWise PDF Error:", err);
+//             return res.status(500).send(err.message);
+//           }
 
-          res.set({
-            "Content-Type": "application/pdf",
-            "Content-Disposition":
-              "attachment; filename=ItemWise.pdf",
-          });
+//           res.set({
+//             "Content-Type": "application/pdf",
+//             "Content-Disposition":
+//               "attachment; filename=ItemWise.pdf",
+//           });
 
-          res.send(buffer);
-        });
+//           res.send(buffer);
+//         });
 
-    } catch (err) {
-      console.error("❌ ItemWise PDF Error:", err);
-      res.status(500).json({ success: false });
-    }
-  }
-);
+//     } catch (err) {
+//       console.error("❌ ItemWise PDF Error:", err);
+//       res.status(500).json({ success: false });
+//     }
+//   }
+// );
 
 
 
