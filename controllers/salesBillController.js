@@ -8,11 +8,6 @@ const mongoose = require("mongoose");
 const getNextBillNoUtil = require("../utils/getNextBillNoUtil");
 const previewNextBillNo = require("../utils/previewNextBillNo");
 // const counterManager = require("../utils/counterManager");
-const { getCounterNumber } = require("../utils/counterManager");
-
-
-// const getCounterNumber = require("../utils/counterManager");
-const getSystemMac = require("../utils/getSystemMac");
 
 
 // ==========================
@@ -163,15 +158,6 @@ exports.getSalesBillById = async (req, res) => {
       // support optional query param ?counter=1
       const counter = Number(req.query.counter) || 1;
 
-      // Validate counter for this shop
-      const allowed = await counterManager.validateCounterForShop(
-        { shopId: req.shop._id?.toString(), shopName: req.shop?.shopname },
-        counter
-      );
-
-      if (!allowed) {
-        return res.status(400).json({ message: "Invalid counter for this shop" });
-      }
 
       // const nextBillNo = await getNextBillNoUtil(SalesBill, req.shop._id, counter);
 
@@ -213,21 +199,18 @@ exports.createSalesBill = async (req, res) => {
   try {
     const { SalesBill, Product } = req.tenantModels;
 
-    const mac = getSystemMac();
-    const counterNo = getCounterNumber(req.shop.shopname, mac);
-
-    if (!counterNo) {
-      return res.status(403).json({
-        message: "Counter authentication failed for this shop.",
-      });
-    }
 
     // const billNo = await getNextBillNoUtil(SalesBill, counterNo);
-    const billNo = await getNextBillNoUtil(
-      req.tenantModels.Counter,
-      req.shop._id,
-      counterNo
-    );
+    const counterNo =
+  Number(req.user.counter) ||
+  Number(req.body.counter) ||
+  1;
+
+const billNo = await getNextBillNoUtil(
+  req.tenantModels.Counter,
+  req.shop._id,
+  counterNo
+);
 
 
     req.body.discountPercent = req.body.discountPercent || 0;
@@ -339,7 +322,7 @@ exports.createSalesBill = async (req, res) => {
       deviceInfo: {
         ip: req.body.deviceInfo?.ip || "",
         userAgent: req.body.deviceInfo?.userAgent || "",
-        mac: mac,                    
+        mac: "",                    
       },
 
       // ⭐ FINAL — USE our calculated values
@@ -549,12 +532,7 @@ exports.deleteSalesBill = async (req, res) => {
 // -----------------------------
 exports.getNextBillNo = async (req, res) => {
   try {
-    const mac = getSystemMac();
-    const counterNo = getCounterNumber(req.shop.shopname, mac);
-
-    if (!counterNo) {
-      return res.status(403).json({ message: "Counter authentication failed." });
-    }
+    const counterNo = Number(req.query.counter) || 1;
 
     const billNo = await previewNextBillNo(
       req.tenantModels.Counter,
@@ -565,7 +543,10 @@ exports.getNextBillNo = async (req, res) => {
     res.json({ billNo });
   } catch (error) {
     console.error("getNextBillNo error:", error);
-    res.status(500).json({ message: "Server Error", error: error.message });
+    res.status(500).json({
+      message: "Server Error",
+      error: error.message,
+    });
   }
 };
 

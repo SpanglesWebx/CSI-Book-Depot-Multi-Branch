@@ -1,25 +1,3 @@
-// /**
-//  * Preview next bill number WITHOUT increment
-//  */
-// const previewNextBillNo = async (Counter, shopId, counterNo) => {
-//   const year = new Date().getFullYear().toString().slice(-2);
-
-//   const counterKey = `salesbill:${shopId}:${counterNo}:${year}`;
-
-//   const counter = await Counter.findOne({ name: counterKey }).lean();
-
-//   const nextSeq = (counter?.seq || 0) + 1;
-
-//   return `C${counterNo}B${year}-${nextSeq}`;
-// };
-
-// module.exports = previewNextBillNo;
-
-
-
-/**
- * Preview next bill number without increment
- */
 
 const previewNextBillNo = async (Counter, shopId, counterNo) => {
 

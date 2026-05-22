@@ -36,6 +36,7 @@ router.get("/findByUsername/:username", async (req, res) => {
           address: shop.address || "N/A",
           contact: shop.contact || "N/A",
           tenantDbUri: shop.tenantDbUri,
+          counters: shop.counters,
         });
       }
     }

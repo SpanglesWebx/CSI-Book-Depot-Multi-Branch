@@ -1,22 +1,3 @@
-// // utils/getSystemMac.js
-// const os = require("os");
-
-// function getSystemMac() {
-//   const interfaces = os.networkInterfaces();
-//   for (let name in interfaces) {
-//     for (let iface of interfaces[name]) {
-//       if (!iface.internal && iface.mac && iface.mac !== "00:00:00:00:00:00") {
-//         return iface.mac.toUpperCase();
-//       }
-//     }
-//   }
-//   return null;
-// }
-
-// module.exports = getSystemMac;
-
-
-
 const os = require("os");
 const systemMac = getSystemMac();
 console.log("MAC From Backend:", systemMac);   

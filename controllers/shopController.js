@@ -4,7 +4,7 @@ const { getTenantDB } = require("../config/tenantManager");
 
 const createShop = async (req, res) => {
   try {
-    const { shopname, designation, address, contact } = req.body;
+    const { shopname, designation, address, contact, counters } = req.body;
 
     if (!shopname) {
       return res.status(400).json({ message: "Shop name required" });
@@ -26,6 +26,7 @@ const createShop = async (req, res) => {
       designation,
       address,
       contact,
+      counters: counters || 1,
       tenantDbUri,
       status: "active",
     });
@@ -114,7 +115,7 @@ const updateShopStatus = async (req, res) => {
 const updateShop = async (req, res) => {
   try {
     const { id } = req.params;
-    const { contact, address, status } = req.body;
+    const { contact, address, status, counters } = req.body;
 
     const updates = {};
 
@@ -123,6 +124,7 @@ const updateShop = async (req, res) => {
     if (contact !== undefined) updates.contact = contact;
     if (address !== undefined) updates.address = address;
     if (status !== undefined) updates.status = status;
+    if (counters !== undefined) updates.counters = counters;
 
     const shop = await Shop.findByIdAndUpdate(id, updates, { new: true });
 

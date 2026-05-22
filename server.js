@@ -344,6 +344,7 @@ server.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📍 Environment: ${process.env.NODE_ENV || "development"}`);
   console.log(`🌐 Access at: https://csibookdepotnode4.zozweb.in or http://localhost:${PORT}`);
+  // console.log(`🌐 Access at: http://localhost:${PORT}`); //Changed for development
   console.log(`✅ Health check: /health`);
   console.log(`📡 WebSocket ready`);
 });

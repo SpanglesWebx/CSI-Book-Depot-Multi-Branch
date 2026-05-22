@@ -14,7 +14,6 @@ const {
 updateShop,
 } = require("../controllers/shopController");
 
-
 const { verifyMaster } = require("../middleware/authMiddleware");
 const Shop = require("../models/Shop");
 

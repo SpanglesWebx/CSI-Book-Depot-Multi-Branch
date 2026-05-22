@@ -1,5 +1,3 @@
-
-
 // config/tenantManager.js
 const mongoose = require("mongoose");
 const { generateTenantUri } = require("./tenantUtils");

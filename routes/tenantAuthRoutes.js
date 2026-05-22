@@ -1,9 +1,3 @@
-
-
-
-
-
-
 // server/routes/tenantAuthRoutes.js
 const express = require("express");
 const bcrypt = require("bcryptjs");
@@ -12,20 +6,16 @@ const Shop = require("../models/Shop");
 const { getTenantDB } = require("../config/tenantManager");
 const getTenantModels = require("../models/tenantModels");
 
-// const { validateSystemAgainstCounter } = require("../utils/counterManager");
-const { getCounterNumber } = require("../utils/counterManager");
-
-const getSystemMac = require("../utils/getSystemMac");
-
 const router = express.Router();
 
-function generateTenantToken(user, shopname) {
+function generateTenantToken(user, shopname, counter) {
   return jwt.sign(
     {
       id: user._id,
       username: user.username,
       role: user.role,
       shopname,
+      counter,
       type: "tenant",
     },
     process.env.TENANT_JWT_SECRET,
@@ -74,12 +64,23 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const { shopname, username, password } = req.body;
+    const { shopname, username, password, counter } = req.body;
     if (!shopname || !username || !password)
       return res.status(400).json({ message: "All fields required" });
 
     const shop = await Shop.findOne({ shopname });
     if (!shop) return res.status(404).json({ message: "Shop not found" });
+    if (!counter) {
+  return res.status(400).json({
+    message: "Counter required",
+  });
+}
+
+if (Number(counter) > Number(shop.counters)) {
+  return res.status(400).json({
+    message: "Invalid counter",
+  });
+}
 
     const tenantConn = await getTenantDB(shopname, shop.tenantDbUri);
     const { User } = getTenantModels(tenantConn);
@@ -98,31 +99,22 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Invalid username or password" });
     }
 
-    // SYSTEM COUNTER VALIDATION
-    const systemMac = getSystemMac();
-    const counterNo = getCounterNumber(shopname, systemMac);
-
-    if (!counterNo) {
-      return res.status(403).json({
-        message: "This system is not allowed to login for this branch.(Counter authentication failed)",
-      });
-    }
 
 
     const token = generateTenantToken(user, shopname);
 
     res.json({
-      message: "Login successful",
-      user: {
-        id: user._id,
-        username: user.username,
-        role: user.role,
-        shopname,
-        status: user.status,
-        counter: Number(counterNo),
-      },
-      token,
-    });
+  message: "Login successful",
+  user: {
+    id: user._id,
+    username: user.username,
+    role: user.role,
+    shopname,
+    counter: Number(counter),
+    status: user.status,
+  },
+  token,
+});
 
   } catch (err) {
     console.error("Tenant login error:", err);

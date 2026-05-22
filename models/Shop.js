@@ -7,6 +7,7 @@ const shopSchema = new mongoose.Schema(
     designation: { type: String },
     address: { type: String },
     contact: { type: String },
+    counters: { type: Number, default: 1, min: 1 },
     tenantDbUri: { type: String, required: true },
     status: { type: String, enum: ["active", "inactive"], default: "active" },
   },
@@ -14,5 +15,4 @@ const shopSchema = new mongoose.Schema(
 );
 
 
-module.exports =
-  mongoose.models.Shop || mongoose.model("Shop", shopSchema);
+module.exports = mongoose.models.Shop || mongoose.model("Shop", shopSchema);

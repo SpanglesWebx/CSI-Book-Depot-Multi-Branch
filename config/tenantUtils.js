@@ -1,6 +1,3 @@
-
-
-
 // config/tenantUtils.js
 const generateTenantUri = (shopname, baseUri) => {
   if (!baseUri) throw new Error("Base tenant DB URI not provided");

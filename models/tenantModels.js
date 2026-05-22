@@ -11,7 +11,7 @@ const modelCache = {};
  * @returns {Object} tenant models
  */
 function getTenantModels(conn) {
-  
+
   if (modelCache[conn.name]) {
     return modelCache[conn.name];
   }
@@ -25,8 +25,8 @@ function getTenantModels(conn) {
   const Category = require("./Category");
   const Counter = require("./Counter");
   const Supplier = require("./Supplier");
-    const Purchase = require("./Purchase");
-      const Expense = require("./Expense");
+  const Purchase = require("./Purchase");
+  const Expense = require("./Expense");
 
   const models = {
     User: conn.models.User || conn.model("User", User.schema),
@@ -38,7 +38,7 @@ function getTenantModels(conn) {
     Counter: conn.models.Counter || conn.model("Counter", Counter.schema),
     Supplier: conn.models.Supplier || conn.model("Supplier", Supplier.schema),
     Purchase: conn.models.Purchase || conn.model("Purchase", Purchase.schema),
-     Expense: conn.models.Expense || conn.model("Expense", Expense.schema),
+    Expense: conn.models.Expense || conn.model("Expense", Expense.schema),
 
   };
 
