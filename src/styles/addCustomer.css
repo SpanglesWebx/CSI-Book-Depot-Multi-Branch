@@ -1,0 +1,291 @@
+/* =================================
+   Customers Page — Modern Styles
+   ================================= */
+
+/* Root / Variables */
+:root {
+  --brand: #00a76f;
+  --brand-dark: #007867;
+  --text-primary: #1c252e;
+  --text-secondary: #637381;
+  --text-muted: #94a3b8;
+  --bg: #f8f9fa;
+  --card-bg: #fff;
+  --border: #e2e8f0;
+  --hover-bg: #f0fdf4;
+  --danger: #e53935;
+  --success: #28a745;
+  --warning: #f59e0b;
+  --transition: all 0.25s ease;
+}
+
+/* =================================
+   Page Layout
+   ================================= */
+.customers-page {
+  padding: 24px;
+  font-family: "Public Sans", sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* =================================
+   Header
+   ================================= */
+.customers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+.customers-header .title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+/* =================================
+   Buttons
+   ================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+.btn-primary {
+  background: var(--brand);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--brand-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 120, 103, 0.3);
+}
+.btn-muted {
+  background: #c8fad6;
+  color: #1c252e;
+}
+.btn-muted:hover {
+  background: #a4f0b5;
+  transform: translateY(-1px);
+}
+
+/* =================================
+   Table Card
+   ================================= */
+.table-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+  transition: var(--transition);
+}
+.table-card:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* =================================
+   Table Styles
+   ================================= */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+.table th,
+.table td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #edf2f7;
+}
+.table th {
+  background: #f9fafb;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.table tr:hover {
+  background: var(--hover-bg);
+  transition: background 0.25s ease;
+}
+
+/* =================================
+   Icon Buttons
+   ================================= */
+.icon-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.icon-btn:hover {
+  transform: scale(1.15);
+}
+.icon-btn.view { color: var(--brand); }
+.icon-btn.edit { color: var(--warning); }
+.icon-btn.delete { color: var(--danger); }
+
+/* =================================
+   Modals
+   ================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 37, 46, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 16px;
+}
+.modal-card {
+  background: var(--card-bg);
+  border-radius: 14px;
+  max-width: 600px;
+  width: 100%;
+  animation: slideUp 0.35s ease;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid #edf2f7;
+}
+.modal-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.icon-close {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+.icon-close:hover { color: var(--danger); }
+.modal-body {
+  padding: 20px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* =================================
+   Form Elements
+   ================================= */
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 14px;
+}
+.input, .textarea, select {
+  padding: 10px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.input:focus, .textarea:focus, select:focus {
+  border-color: var(--brand);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 167, 111, 0.2);
+}
+.textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Modal Actions */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 10px;
+}
+
+/* =================================
+   Toasts
+   ================================= */
+.toasts {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 3000;
+}
+.toast {
+  background: var(--brand);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  animation: fadeIn 0.35s ease forwards;
+}
+.toast.error { background: var(--danger); }
+.toast.success { background: var(--success); }
+
+/* =================================
+   Details Grid
+   ================================= */
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+.detail {
+  display: flex;
+  justify-content: space-between;
+}
+.detail-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.detail-value {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* =================================
+   Animations
+   ================================= */
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =================================
+   Responsive
+   ================================= */
+@media (max-width: 1024px) {
+  .table th, .table td { padding: 10px 8px; font-size: 13px; }
+  .customers-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+@media (max-width: 768px) {
+  .modal-card { max-width: 95%; padding: 16px; }
+}
+@media (max-width: 480px) {
+  .table th, .table td { padding: 8px 6px; font-size: 12px; }
+  .btn { padding: 8px 12px; font-size: 0.9rem; }
+  .customers-header h2 { font-size: 1.4rem; }
+}

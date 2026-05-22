@@ -1,0 +1,61 @@
+/* Table wrapper for horizontal scrolling */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}
+
+/* Make table fill the wrapper */
+.table {
+  width: 100%;
+  min-width: 600px; /* ensures table columns don’t shrink too much */
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+/* Table cells */
+.table th,
+.table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+  white-space: nowrap; /* prevent text from wrapping */
+}
+
+.table td {
+    font-weight: normal;
+  
+}
+
+/* Mobile-friendly card layout for screens < 600px */
+@media (max-width: 600px) {
+  .table, .table thead, .table tbody, .table th, .table td, .table tr {
+    display: block;
+  }
+  .table thead tr {
+    display: none; /* hide table header */
+  }
+  .table tbody tr {
+    margin-bottom: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px;
+    background: #fff;
+  }
+  .table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 10px;
+    border-bottom: 1px solid #f1f1f1;
+  }
+  .table tbody td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #555;
+    flex-basis: 50%;
+  }
+  .table tbody td:last-child {
+    border-bottom: 0;
+  }
+}
+

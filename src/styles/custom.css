@@ -1,0 +1,35 @@
+/* Font family (Public Sans from Google Fonts) */
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap");
+
+/* Root Variables */
+:root {
+  --ds-primary-text-emphasis: #637381;
+  --ds-primary-bg: #c8fad6;
+  --ds-section-tab: #007867;
+}
+
+/* Global styles */
+body {
+  font-family: "Public Sans", sans-serif;
+  color: var(--ds-primary-text-emphasis);
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: var(--ds-primary-bg);
+}
+
+.sidebar a {
+  color: var(--ds-primary-text-emphasis);
+  transition: all 0.2s ease;
+}
+
+.sidebar a:hover {
+  color: var(--ds-section-tab);
+}
+
+/* Section Tabs */
+.section-tab {
+  color: var(--ds-section-tab);
+  font-weight: 600;
+}

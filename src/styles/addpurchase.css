@@ -1,0 +1,190 @@
+/* ===========================
+   GLOBAL UI ANIMATIONS
+   =========================== */
+
+/* Smooth fade & slide */
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth fade only */
+@keyframes fade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Dropdown opening animation */
+.fade-slide {
+  animation: fadeSlide 0.18s ease forwards;
+}
+
+/* ===========================
+   DROPDOWN & POPUP STYLE
+   =========================== */
+
+.addp-dropdown {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  max-height: 260px;
+  overflow-y: auto;
+  animation: fadeSlide 0.18s ease;
+  z-index: 9999;
+}
+
+/* Dropdown items */
+.addp-dropdown button,
+.addp-dropdown div,
+.addp-dropdown tr {
+  transition: background 0.15s ease;
+}
+
+.addp-dropdown button:hover,
+.addp-dropdown div:hover,
+.addp-dropdown tr:hover {
+  background: #f3f4f6;
+}
+
+/* ===========================
+   SCROLLBAR NICE STYLE
+   =========================== */
+
+.addp-dropdown::-webkit-scrollbar,
+.salesbill-table::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.addp-dropdown::-webkit-scrollbar-track,
+.salesbill-table::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.addp-dropdown::-webkit-scrollbar-thumb,
+.salesbill-table::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.addp-dropdown::-webkit-scrollbar-thumb:hover,
+.salesbill-table::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ===========================
+   TABLE RESPONSIVE FIXES
+   =========================== */
+
+.salesbill-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+
+.salesbill-table th {
+  background: #f8fafc;
+  font-weight: 600;
+  padding: 10px 6px;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+
+.salesbill-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.salesbill-table tr:hover td {
+  background: #f9fafb;
+}
+
+/* ===========================
+   INPUT FOCUS GLOW
+   =========================== */
+
+.addp-input:focus,
+input:focus {
+  outline: none;
+  border-color: #00a76f !important;
+  box-shadow: 0 0 0 2px rgba(0,167,111,0.25);
+  transition: 0.15s ease;
+}
+
+/* ===========================
+   ACTION BUTTONS
+   =========================== */
+
+.plus, .edit, .danger, .success {
+  cursor: pointer;
+  border: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.plus:hover {
+  background: #00935f;
+  transform: scale(1.05);
+}
+
+.edit {
+  background: #f3f4f6;
+}
+
+.edit:hover {
+  background: #e2e8f0;
+  transform: scale(1.05);
+}
+
+.danger {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.danger:hover {
+  background: #fecaca;
+  transform: scale(1.05);
+}
+
+.success {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.success:hover {
+  background: #bbf7d0;
+  transform: scale(1.05);
+}
+
+/* ===========================
+   TOAST STYLE
+   =========================== */
+
+.addp-toast {
+  animation: fadeSlide 0.2s ease;
+}
+
+/* ===========================
+   MOBILE RESPONSIVE
+   =========================== */
+
+@media (max-width: 640px) {
+  .salesbill-table th,
+  .salesbill-table td {
+    padding: 6px 4px;
+    font-size: 12px;
+  }
+
+  .plus, .edit, .danger, .success {
+    padding: 4px 6px;
+  }
+}

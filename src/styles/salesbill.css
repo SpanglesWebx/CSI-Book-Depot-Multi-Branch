@@ -1,0 +1,862 @@
+/* === Font === */
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap");
+/* === Root Variables === */
+:root {
+  --brand: #00a76f;
+  /* --brand-dark: #008f5e; */
+
+  --title: #1c252e;
+
+  --soft: #f4f6f8;
+  --ring: #c8fad6;
+
+  --success: #28a745;
+  --warning: #f4c10f;
+  --danger: #dc3545;
+ --card:#ffffff;
+--border:#e5e7eb;
+
+
+ 
+
+ --primary:#00A76F;
+  --primary-dark:#007867;
+  --accent:#c8fad6;
+  --bg:#f7f8fa;
+  --card:#ffffff;
+  --text:#222;
+  --muted:#6b7280;
+  /* --border:#e5e7eb; */
+  --shadow:0 8px 24px rgba(0,0,0,0.08);
+
+  
+}
+
+
+
+body {
+  font-family: "Public Sans", sans-serif;
+  background: #f8f9fa;
+  color: var(--title);
+  margin: 0;
+}
+
+/* === Container === */
+.salesbill-container {
+  background: var(--bg);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+/* === Header === */
+.salesbill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.salesbill-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--brand);
+  margin: 0;
+}
+
+.salesbill-breadcrumb {
+  font-size: 14px;
+  color: var(--text);
+  margin-top: 4px;
+}
+
+.add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--brand);
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.add-btn:hover {
+  background: var(--brand-dark);
+}
+
+/* === Toolbar === */
+.salesbill-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.salesbill-search,
+.salesbill-filter,
+.custom-date input {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+.salesbill-filter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.custom-date {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* === SalesBill Table Wrapper === */
+.salesbill-table-wrapper {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+/* === SalesBill Table (Completely Borderless) === */
+.salesbill-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: var(--text);
+  table-layout: fixed;
+  background: transparent;
+  border: none;
+}
+
+/* Header & Body Cells */
+.salesbill-table th,
+.salesbill-table td {
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: middle;
+  word-wrap: break-word;
+  border: none; /* remove all lines */
+}
+
+/* Table Header */
+.salesbill-table thead th {
+  background: #f9fafb; /* optional light background */
+  color: var(--text);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  white-space: nowrap;
+  border: none; /* no line under header */
+}
+
+/* Hover effect for rows (keep or remove as desired) */
+.salesbill-table tbody tr:hover {
+  background: rgba(0, 167, 111, 0.05);
+}
+
+/* Input fields inside table */
+.salesbill-table input {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  color: var(--text);
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.salesbill-table input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 5px rgba(0, 167, 111, 0.3);
+}
+
+
+
+
+/* Scrollbar styling */
+.salesbill-table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.salesbill-table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+/* Center text utility */
+.salesbill-table .text-center {
+  text-align: center;
+}
+
+
+/* Remove arrows from number inputs */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* === Row Actions === */
+.row-actions {
+  display: flex;
+  gap: 6px;
+}
+.row-actions button {
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #fff;
+}
+.row-actions .plus {
+  background: var(--brand);
+}
+.row-actions .plus:hover {
+  background: var(--brand-dark);
+}
+.row-actions .danger {
+  background: var(--danger);
+}
+.row-actions .danger:hover {
+  background: #b52d2d;
+}
+.row-actions .edit {
+  background: var(--warning);
+  color: #000;
+}
+.row-actions .edit:hover {
+  background: #d4a90f;
+}
+
+/* === Sales Bill Actions (main list) === */
+.salesbill-actions {
+  display: flex;
+  gap: 8px;
+}
+.salesbill-actions .action-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  color: #fff;
+}
+.salesbill-actions .view {
+  background: var(--success);
+}
+.salesbill-actions .view:hover {
+  background: #218838;
+}
+.salesbill-actions .edit {
+  background: var(--warning);
+  color: #000;
+}
+.salesbill-actions .edit:hover {
+  background: #d4a90f;
+}
+
+/* === Modal === */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(28, 37, 46, 0.55);
+  z-index: 1000;
+  padding: 16px;
+  animation: fadeIn 0.3s ease;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 1100px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.35s ease;
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 8px;
+}
+.modal-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--title);
+}
+.icon-close {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--text);
+  transition: color 0.2s;
+}
+.icon-close:hover {
+  color: #e63946;
+}
+
+/* === Bill Meta === */
+.bill-meta {
+  background: var(--soft);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 12px;
+}
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+.meta-grid label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.meta-grid input {
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
+  background: #fff;
+}
+
+/* === Totals Section === */
+.totals-layout {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 20px;
+}
+.totals-left {
+  flex: 1;
+  min-width: 260px;
+  background: #f9f9f9;
+  padding: 16px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.totals-left div {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+.totals-left input {
+  text-align: right;
+  width: 120px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 4px 8px;
+}
+.totals-right {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bill-amount-card {
+  background: var(--brand);
+  color: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.bill-amount-card h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+.bill-amount-card .amount {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+/* === Modal Actions === */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 16px;
+}
+.modal-actions .primary {
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+.modal-actions .primary:hover {
+  background: var(--brand-dark);
+}
+.modal-actions .secondary {
+  background: #e5e7eb;
+  color: #1f2937;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .salesbill-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .totals-layout {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .bill-amount-card {
+    width: 100%;
+  }
+}
+
+
+
+/* Chrome, Safari, Edge */
+input[type="number"].no-spin::-webkit-outer-spin-button,
+input[type="number"].no-spin::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+/* Firefox */
+input[type="number"].no-spin {
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+}
+
+
+.bill-amount-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  width: 280px;
+}
+
+.bill-amount-card h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 6px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+  color: #444;
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111;
+}
+
+
+/* .suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 9999;
+  background: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+} */
+
+/* --------------------------
+Autocomplete Suggestions
+/* Suggestions container */
+.suggestions {
+  position: absolute;   /* absolute inside td.relative */
+  top: 100%;            /* below the input */
+  left: 0;
+  z-index: 9999;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;          /* match input width */
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Each suggestion */
+.suggestions .suggestion {
+  padding: 6px 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+
+/* Hover effect */
+.suggestions .suggestion:hover {
+  background-color: #f2f2f2;
+}
+
+/* Bold main text */
+.suggestions .suggestion div:first-child {
+  font-weight: 600;
+}
+
+/* Secondary text */
+.suggestions .suggestion div:last-child {
+  font-size: 12px;
+  color: #555;
+}
+
+/* Anchor td must have relative position */
+td.relative {
+  position: relative;
+}
+
+
+/* Ensure td.relative exists to anchor suggestions */
+td.relative {
+  position: relative; 
+}
+
+
+/* ------------------------------- */
+/* Product Code / Name Suggestions */
+/* ------------------------------- */
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 9999;
+  width: 300px;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.suggestion {
+  padding: 6px 8px;
+  cursor: pointer;
+}
+.suggestion:hover {
+  background: #f2f2f2;
+}
+
+
+.suggestions {
+  position: absolute;
+  top: 100%; /* right below the input */
+  left: 0;
+  z-index: 1000;
+  width: 100%; /* match input width */
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  font-size: 14px;
+}
+
+.suggestion {
+  padding: 6px 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suggestion:hover {
+  background-color: #f5f5f5;
+}
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 9999;
+  background: white;
+  border: 1px solid #ccc;
+  width: max-content; /* or a fixed width like 200px */
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.suggestions .suggestion {
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.suggestions .suggestion:hover {
+  background-color: #f2f2f2;
+}
+
+/* ------------------------------- */
+/* Batch Dropdown Suggestions       */
+/* ------------------------------- */
+.batch-suggestions {
+  position: absolute;
+  top: 100%; /* directly below the batch input */
+  left: 0;
+  z-index: 1000;
+  width: 100%; /* match input or table cell width */
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-size: 13px;
+}
+
+.batch-suggestions table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.batch-suggestions th,
+.batch-suggestions td {
+  padding: 6px 8px;
+  text-align: left;
+}
+
+.batch-suggestions tr:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+
+
+
+/* Bill Amount / Summary Card */
+.bill-amount-card {
+  background: #fff;
+  border: 1px solid var(--border, #ddd);
+  border-radius: 8px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  min-width: 220px;
+}
+
+.bill-amount-card h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.summary-line,
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.summary-line span {
+  color: #555;
+}
+
+.summary-line strong {
+  color: #111;
+}
+
+.summary-total {
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000;
+}
+
+.summary-total strong {
+  font-size: 16px;
+  color: #007bff; /* highlight net amount */
+}
+
+.bill-amount-card hr {
+  border: none;
+  border-top: 1px dashed #ccc;
+  margin: 10px 0;
+}
+
+
+.autocomplete-list.scrollable {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+
+
+.autocomplete-list.wide {
+  max-height: 250px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  background: white;
+  position: absolute;
+  width: 500px; /* make it wide */
+  z-index: 1000;
+}
+
+.autocomplete-list li {
+  padding: 6px 10px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.autocomplete-list li:hover {
+  background: #f5f5f5;
+}
+
+.product-suggestion span {
+  font-size: 12px;
+  margin-right: 8px;
+}
+
+
+
+/* styles.css */
+.popup-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+  z-index: 9999;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  opacity: 0.95;
+}
+
+.popup-message.success {
+  background-color: #4caf50; /* green */
+}
+
+.popup-message.error {
+  background-color: #f44336; /* red */
+}
+
+
+.modal-content.large {
+  width: 90%;       /* previously maybe 70% */
+  max-width: 1200px; 
+  padding: 20px;
+}
+
+
+
+/* Square 80mm Modal Layout */
+.square-80mm {
+  width: 302px;   /* ~80mm */
+  height: 302px;  /* ~80mm */
+  margin: 20px auto;
+  padding: 10px;
+  background: #fff;
+  border-radius: 6px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.square-80mm table {
+  font-size: 10px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.square-80mm th,
+.square-80mm td {
+  padding: 2px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  word-wrap: break-word;
+}
+
+.square-80mm .modal-header h2 {
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.square-80mm p {
+  margin: 2px 0;
+  font-size: 11px;
+}
+
+.square-80mm .modal-actions {
+  text-align: center;
+  margin-top: auto;
+}
+
+
+@media (max-width: 768px) {
+  .modal-content.large {
+    width: 95%;
+    padding: 15px;
+  }
+}
+
+
+
+
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

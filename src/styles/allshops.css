@@ -1,0 +1,212 @@
+
+/* =======================================
+   All Shops Page — Modern Professional
+   ======================================= */
+.all-shops-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Public Sans", sans-serif;
+  background: #f8f9fa;
+  color: #1c252e;
+  transition: all 0.3s ease;
+}
+
+/* Page Header */
+.all-shops-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.all-shops-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #007867; /* brand color */
+  margin: 0;
+}
+
+.all-shops-header .header-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.all-shops-header .add-shop-btn {
+  background-color: #007867;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.all-shops-header .add-shop-btn:hover {
+  background-color: #005f50;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 120, 103, 0.25);
+}
+
+/* =======================================
+   Shops Grid
+   ======================================= */
+.shops-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+/* =======================================
+   Shop Card
+   ======================================= */
+.shop-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 180px;
+}
+
+.shop-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  border-color: #c8fad6;
+}
+
+/* Card Typography */
+.shop-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #007867;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.shop-card p {
+  font-size: 14px;
+  color: #637381;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.shop-card .shop-meta {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* Card Actions */
+.shop-card .card-actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.shop-card .card-actions button {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.shop-card .card-actions .edit {
+  background-color: #f4c10f;
+  color: #1c252e;
+}
+
+.shop-card .card-actions .edit:hover {
+  background-color: #d4a90f;
+}
+
+.shop-card .card-actions .delete {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.shop-card .card-actions .delete:hover {
+  background-color: #b52d2d;
+  transform: scale(1.05);
+}
+
+/* =======================================
+   Responsive
+   ======================================= */
+@media (max-width: 1024px) {
+  .shops-grid {
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .all-shops-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .shops-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-card {
+    padding: 16px 12px;
+    min-height: 160px;
+  }
+  .shop-card h3 {
+    font-size: 18px;
+  }
+  .shop-card p,
+  .shop-card .shop-meta {
+    font-size: 12px;
+  }
+  .shop-card .card-actions button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
+
+
+/* src/styles/allShops.css */
+.all-shops-page {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.shop-card {
+  transition: all 0.3s ease-in-out;
+}
+
+.shop-card:hover {
+  transform: translateY(-4px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
